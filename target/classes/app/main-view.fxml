@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController" prefHeight="700.0" prefWidth="1000.0">
+    <center>
+        <HBox alignment="CENTER" spacing="20.0">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+            <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS" style="-fx-border-color: #dddddd; -fx-background-color: #fafafa;">
+                <Label text="Oryginalny obraz">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Label>
+                <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;">
+                    <ImageView fx:id="originalImageView" pickOnBounds="true" preserveRatio="true"/>
+                </ScrollPane>
+            </VBox>
+            <VBox alignment="CENTER" spacing="5.0" HBox.hgrow="ALWAYS" style="-fx-border-color: #dddddd; -fx-background-color: #fafafa;">
+                <Label text="Przetworzony obraz">
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
+                </Label>
+                <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: transparent;">
+                    <ImageView fx:id="processedImageView" pickOnBounds="true" preserveRatio="true"/>
+                </ScrollPane>
+            </VBox>
+        </HBox>
+    </center>
+
+    <left>
+        <VBox spacing="15.0" prefWidth="250.0" style="-fx-background-color: #eaeaea; -fx-border-color: #cccccc; -fx-border-width: 0 1 0 0;">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            </padding>
+            
+            <Label text="Zarządzanie plikiem">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <Button fx:id="btnLoad" text="Wczytaj obraz (.jpg)" maxWidth="Infinity" onAction="#handleLoadImage"/>
+            <Button fx:id="btnSave" text="Zapisz obraz" maxWidth="Infinity" onAction="#handleSaveImage" disable="true"/>
+            
+            <Separator/>
+            
+            <Label text="Transformacje geometrii">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <HBox spacing="10.0">
+                <Button fx:id="btnRotateLeft" text="↺ 90°" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#handleRotateLeft" disable="true"/>
+                <Button fx:id="btnRotateRight" text="↻ 90°" maxWidth="Infinity" HBox.hgrow="ALWAYS" onAction="#handleRotateRight" disable="true"/>
+            </HBox>
+            <Button fx:id="btnScale" text="Skaluj obraz..." maxWidth="Infinity" onAction="#handleScaleImage" disable="true"/>
+            
+            <Separator/>
+            
+            <Label text="Filtry i Przetwarzanie">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <ComboBox fx:id="operationsComboBox" maxWidth="Infinity" promptText="Wybierz operację..."/>
+            <Button fx:id="btnExecute" text="Wykonaj" maxWidth="Infinity" onAction="#handleExecuteOperation" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" disable="true"/>
+        </VBox>
+    </left>
+</BorderPane>
