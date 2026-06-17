@@ -1,28 +1,28 @@
-# Laboratorium 5: Nieograniczony Problem Plecakowy (Java)
+# Laboratorium 6: Wielowątkowość i GUI w Java – Przetwarzanie Obrazów
 
-Projekt realizowany w ramach przedmiotu **Platformy Programistyczne .NET i Java**. Celem zadania było zapoznanie się z podstawami projektowania aplikacji w języku Java (system budowania Maven, Oracle OpenJDK) oraz implementacja algorytmu zachłannego rozwiązującego nieograniczony problem plecakowy.
+Projekt realizowany w ramach przedmiotu **Platformy Programistyczne .NET i Java** (Politechnika Wrocławska). Celem zadania było stworzenie okienkowej aplikacji graficznej w technologii **JavaFX** służącej do zaawansowanej obróbki i edycji plików graficznych w formacie `.jpg`.
 
-Aplikacja została zaimplementowana w architekturze okienkowej z użyciem biblioteki **JavaFX** oraz niestandardowych powiadomień systemu (Toast).
+Aplikacja została zaprojektowana w oparciu o dostarczone wymagania biznesowe i historyjki użytkownika (User Stories).
 
+### 1. Zarządzanie plikami i interfejs (Zadanie 1)
+* **Ekran startowy:** Zgodny z zasadami UX, zawierający logo PWr, dane autora, podgląd obrazu oryginalnego oraz przetworzonego.
+* **Wczytywanie obrazu:** Integracja z systemowym oknem wyboru plików z walidacją formatu `.jpg` oraz obsługą pamięci podręcznej.
+* **Zapis obrazu:** Okno modalne do podawania nowej nazwy pliku z pełną walidacją długości znaków (3-100) i automatycznym zapisem do systemowego folderu *Obrazy*.
+* **Komunikaty:** Dynamiczne powiadomienia typu **Toast** informujące użytkownika o sukcesie, błędach lub ostrzeżeniach (np. brak wybranej operacji).
 
-1. **Zadanie 1 (Generator instancji problemu):**
-   * Implementacja klasy `Problem` oraz klasy reprezentującej przedmioty.
-   * Wykorzystanie generatora liczb pseudolosowych (`Random`) z obsługą ziarna (*seed*) do losowania wag i wartości przedmiotów z przedziału $<1, 10>$.
-   * Przeciążenie metody `toString()` przy użyciu adnotacji `@Override` w celu czytelnej prezentacji wygenerowanej instancji.
-
-2. **Zadanie 2 (Algorytm rozwiązujący - Solver):**
-   * Implementacja metody `Solve(int capacity)` wykorzystującej algorytm aproksymacyjny (Dantzig, 1957).
-   * Sortowanie przedmiotów według współczynnika opłacalności (stosunek wartości do wagi).
-   * Zachłanne pakowanie najbardziej opłacalnych przedmiotów aż do wyczerpania maksymalnej pojemności plecaka.
-   * Zwracanie wyniku w postaci dedykowanej klasy zawierającej listę przedmiotów, ich ilość, sumaryczną wagę oraz sumaryczną wartość.
+### 2. Operacje Przetwarzania Obrazu (Zadanie 2)
+* **Skalowanie:** Okno modalne umożliwiające zmianę szerokości i wysokości w pikselach (zakres 0-3000) z opcją przywrócenia oryginalnych wymiarów.
+* **Obrót obrazu:** Szybkie przyciski z ikonami strzałek pozwalające na obracanie obrazu o 90 stopni w lewo oraz w prawo.
+* **Negatyw:** Generowanie negatywu na kopii roboczej obrazu z powiadomieniem Toast o statusie operacji.
+* **Progowanie:** Przetwarzanie obrazu z wykorzystaniem okna modalnego do wyboru progu numerycznego w zakresie 0-255.
+* **Konturowanie:** Algorytm wyodrębniający kontury kształtów znajdujących się na wgranym zdjęciu.
 
 ## Technologia i Środowisko
 * **Język:** Java
-* **Środowisko:** Oracle OpenJDK
+* **Framework GUI:** JavaFX
 * **System budowania:** Maven
-* **Interfejs graficzny:** JavaFX
 
 ## Uruchomienie projektu
-Projekt wykorzystuje framework Maven. Aby go uruchomić, upewnij się, że masz skonfigurowane zmienne środowiskowe dla JDK, a następnie użyj polecenia:
+Aplikacja wykorzystuje system Maven. Aby uruchomić ją lokalnie, użyj polecenia:
 ```bash
 mvn clean javafx:run
